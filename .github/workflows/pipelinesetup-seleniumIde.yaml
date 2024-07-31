@@ -11,7 +11,7 @@ on:
 
 jobs:
    build:
-     runs-on: ubunto-lates
+     runs-on: ubunto-latest
 
    steps:
      -name: Checkout code
