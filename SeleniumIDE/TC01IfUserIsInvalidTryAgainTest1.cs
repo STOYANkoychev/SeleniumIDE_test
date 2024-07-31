@@ -13,6 +13,15 @@ public class TC01IfUserIsInvalidTryAgainTest
     [SetUp]
     public void SetUp()
     {
+        ChromeOptions options = new ChromeOptions();
+        options.AddArguments("headless");  // не се възпроизвежда видимо на браузъра 
+        options.AddArguments("no-sandbox");// изключва функсция за сигурност
+        options.AddArguments("disable-dev-shm-usage");//забраняваме използв на споделена памет да нямаме проблеми
+        options.AddArguments("disable-gpu");// изключва графичният интерфейс на браузера
+        options.AddArguments("windows-size=1920x1080");
+
+
+
         driver = new ChromeDriver();
         js = (IJavaScriptExecutor)driver;
         vars = new Dictionary<string, object>();
