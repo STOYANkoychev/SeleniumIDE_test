@@ -2,32 +2,31 @@ name: Selenium IDE CI
 
 on:
   push:
-     branches:
-        -main
+    branches:
+      - main
   pull_request:
-     branches:
-       - main
-
+    branches:
+      - main
 
 jobs:
   build:
-     runs-on: ubunto-latest
+    runs-on: ubunto-latest
      
-  steps:
-  - name: Chekout code
-    uses: actions/chekout@v3
+    steps:
+    - name: Chekout code
+      uses: actions/chekout@v3
    
 
-   -name: Set up .Net Core
-    uses: actions/setup-dotnet@v3
-    with:
-      dotnet-version: "6.0.x"
+    - name: Set up .Net Core
+      uses: actions/setup-dotnet@v3
+      with:
+        dotnet-version: "6.0.x"
 
-     -name: Install dependencies 
+    - name: Install dependencies 
       run: dotnet restore   
 
-      -name: Build
-       run:  dotnet build --no-restore  
+    - name: Build
+       run: dotnet build --no-restore  
 
-       -name: Run tests
-       run:  dotnet tests --verbosity normal 
+    - name: Run tests
+       run: dotnet tests --verbosity normal 
